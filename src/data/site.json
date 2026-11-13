@@ -1,0 +1,130 @@
+{
+  "site": {
+    "name": "Zeno Hirschfeld",
+    "title": "Zeno Hirschfeld — Independent Designer & Developer",
+    "role": "Freelance Designer & Developer",
+    "location": "Zwolle, The Netherlands",
+    "timezone": "Europe/Amsterdam",
+    "email": "info@zenohirschfeld.nl",
+    "shortBio": "Helping brands thrive in the digital world. Located in The Netherlands. Delivering custom-made digital designs and high-end interactive websites with a focus on motion and interaction.",
+    "socials": [
+      { "name": "Awwwards", "url": "https://www.awwwards.com/zenohirschfeld" },
+      { "name": "Instagram", "url": "https://www.instagram.com/zenohirschfeld" },
+      { "name": "Twitter / X", "url": "https://twitter.com/zenohirschfeld" },
+      { "name": "LinkedIn", "url": "https://www.linkedin.com/in/zenohirschfeld" }
+    ],
+    "navLinks": [
+      { "title": "Home", "href": "/#" },
+      { "title": "Work", "href": "/#work" },
+      { "title": "About", "href": "/#about" },
+      { "title": "Contact", "href": "/#contact" }
+    ]
+  },
+  "projects": [
+    {
+      "id": "decimal",
+      "title": "Decimal",
+      "category": "Design & Development",
+      "year": "2024",
+      "role": "Lead Design & Front-End Architecture",
+      "client": "Decimal Studio Inc.",
+      "description": "Portfolio and brand experience for digital studio Decimal with fluid micro-interactions and smooth WebGL canvas.",
+      "fullOverview": "Decimal is an international digital design studio focused on progressive branding and bespoke software. The objective was to construct an uncompromising digital home that reflects their precision engineering and radical minimalism. The experience features an ultra-responsive layout with bespoke fluid typography that scales with viewport precision.",
+      "challenges": "Integrating high-performance WebGL shaders with Next.js App Router without causing paint jitter or CPU overload on mobile battery-saver modes.",
+      "solution": "Developed a custom canvas scheduler that throttles rendering outside visible viewports and offloads heavy math transformations to GPU fragment shaders, keeping frame rates locked at 60fps+.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Three.js / WebGL", "GSAP ScrollTrigger", "Lenis"],
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "color": "#1C1D20",
+      "liveUrl": "https://decimal.io",
+      "nextProjectId": "fabric"
+    },
+    {
+      "id": "fabric",
+      "title": "Fabric Agency",
+      "category": "Development",
+      "year": "2024",
+      "role": "Creative Front-End Developer",
+      "client": "Fabric Agency London",
+      "description": "Interactive, typography-first showcase site featuring advanced GSAP scroll triggers and smooth inertia transitions.",
+      "fullOverview": "Fabric Agency is a London-based creative collective specializing in cultural campaigns and high-fashion digital art. They required a website that felt more like an editorial art magazine than a conventional corporate page. Every headline interacts with mouse velocity and scroll inertia.",
+      "challenges": "Creating multi-column asynchronous parallax columns where typography and images glide at differing ratios without breaking DOM scroll boundaries.",
+      "solution": "Implemented custom GSAP ScrollTrigger timelines synced to a global Lenis virtual scroll instance, maintaining mathematical sync across dual-monitor and ultrawide viewports.",
+      "technologies": ["Next.js", "React 19", "GSAP Flip & ScrollTrigger", "Tailwind CSS", "Framer Motion"],
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "color": "#28292c",
+      "liveUrl": "https://fabric.co",
+      "nextProjectId": "twok"
+    },
+    {
+      "id": "twok",
+      "title": "TWOK Studio",
+      "category": "Design & Interaction",
+      "year": "2023",
+      "role": "UI/UX & Creative Technologist",
+      "client": "TWOK Global",
+      "description": "Next-generation digital experience built for creative consultancy with custom cursor feedback loops and audio elements.",
+      "fullOverview": "TWOK Studio provides strategic design direction for emerging tech companies and venture funds. The website merges brutalist typographic hierarchy with tactile micro-interactions, magnetic drag surfaces, and subtle synthesized audio feedback when switching portfolio states.",
+      "challenges": "Building tactile physics-based magnetic controls that feel organic rather than scripted, ensuring zero touch latency on iOS Safari.",
+      "solution": "Utilized spring inertia formulas (`elastic.out`) alongside Web Audio API synthesis triggers that preload instantaneously upon hover intent.",
+      "technologies": ["TypeScript", "Next.js", "Web Audio API", "Tailwind CSS", "GSAP InertiaPlugin"],
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "color": "#141517",
+      "liveUrl": "https://twok.studio",
+      "nextProjectId": "alva"
+    },
+    {
+      "id": "alva",
+      "title": "Alva Yachts",
+      "category": "Full Experience",
+      "year": "2023",
+      "role": "Lead Digital Architect",
+      "client": "Alva Yachts Monaco",
+      "description": "Luxury marine brand presentation highlighting sustainable catamarans with custom horizontal parallax and high-res video triggers.",
+      "fullOverview": "Alva Yachts designs and manufactures luxury electric solar catamarans and sailing yachts. The digital showcase captures the serene experience of zero-emission ocean travel with sweeping horizontal scroll scenes, seamless 4K video scrubbing, and technical specification comparisons.",
+      "challenges": "Streaming heavy 4K video segments without blocking the initial critical rendering path or causing layout cumulative shifts.",
+      "solution": "Built an intelligent media pre-fetcher that dynamically switches from low-bitrate WebP image sequences on slower connections to high-definition MP4 streams on desktop broadband.",
+      "technologies": ["Next.js", "Tailwind CSS", "Video Scrubbing", "GSAP", "Lenis Smooth Scroll"],
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "color": "#232427",
+      "liveUrl": "https://alva-yachts.com",
+      "nextProjectId": "carrara"
+    },
+    {
+      "id": "carrara",
+      "title": "Carrara Studio",
+      "category": "Concept & Design",
+      "year": "2023",
+      "role": "Art Director & Frontend Engineer",
+      "client": "Carrara Architecture Milan",
+      "description": "Minimalist architectural and interior portfolio emphasizing clean negative space and magnetic dynamic navigation.",
+      "fullOverview": "Carrara Studio is a Milanese architectural firm renowned for marble restoration and modern residential monolithic structures. The platform celebrates negative space and proportional harmony, letting high-contrast photography of physical spaces take center stage.",
+      "challenges": "Creating a seamless page transition that preserves scroll position and smoothly morphs project card bounding boxes into fullscreen hero sections.",
+      "solution": "Designed SVG bezier curve curtain transitions that calculate container coordinates on click, producing zero perceived latency when navigating between index and case studies.",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Lenis"],
+      "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "color": "#1e1f23",
+      "liveUrl": "https://carrara.design",
+      "nextProjectId": "decimal"
+    }
+  ]
+}
