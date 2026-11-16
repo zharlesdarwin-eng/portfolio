@@ -8,10 +8,8 @@
     "email": "info@zenohirschfeld.nl",
     "shortBio": "Helping brands thrive in the digital world. Located in The Netherlands. Delivering custom-made digital designs and high-end interactive websites with a focus on motion and interaction.",
     "socials": [
-      { "name": "Awwwards", "url": "https://www.awwwards.com/zenohirschfeld" },
-      { "name": "Instagram", "url": "https://www.instagram.com/zenohirschfeld" },
-      { "name": "Twitter / X", "url": "https://twitter.com/zenohirschfeld" },
-      { "name": "LinkedIn", "url": "https://www.linkedin.com/in/zenohirschfeld" }
+      { "name": "LinkedIn", "url": "https://www.linkedin.com/in/zenohirschfeld" },
+      { "name": "GitHub", "url": "https://github.com/zharlesdarwin-eng" }
     ],
     "navLinks": [
       { "title": "Home", "href": "/#" },
