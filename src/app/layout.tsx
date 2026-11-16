@@ -3,17 +3,18 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
 import Header from "@/components/layout/Header";
+import { LanguageProvider } from "@/context/LanguageContext";
 import siteData from "@/data/site.json";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: siteData.site.title,
-  description: siteData.site.shortBio,
-  keywords: ["Zeno Hirschfeld", "Portfolio", "Design", "Development", "Freelance", "Interaction", "GSAP"],
+  title: "Zeno Hirschfeld — Freelance Ontwerper & Ontwikkelaar",
+  description: "Op maat gemaakte digitale ontwerpen en hoogwaardige interactieve websites met een sterke focus op beweging en interactie. Gevestigd in Utrecht.",
+  keywords: ["Zeno Hirschfeld", "Portfolio", "Design", "Development", "Freelance", "Interactie", "GSAP", "Utrecht"],
   authors: [{ name: "Zeno Hirschfeld" }],
   openGraph: {
-    title: siteData.site.title,
-    description: siteData.site.shortBio,
+    title: "Zeno Hirschfeld — Freelance Ontwerper & Ontwikkelaar",
+    description: "Op maat gemaakte digitale ontwerpen en hoogwaardige interactieve websites met een sterke focus op beweging en interactie.",
     url: "https://zenohirschfeld.nl",
     siteName: "Zeno Hirschfeld",
     images: [
@@ -24,14 +25,13 @@ export const metadata: Metadata = {
         alt: siteData.site.title,
       },
     ],
-    locale: "en_US",
+    locale: "nl_NL",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: siteData.site.title,
-    description: siteData.site.shortBio,
-    creator: "@zenohirschfeld",
+    title: "Zeno Hirschfeld — Freelance Ontwerper & Ontwikkelaar",
+    description: "Op maat gemaakte digitale ontwerpen en hoogwaardige interactieve websites.",
   },
 };
 
@@ -41,19 +41,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="nl" className="scroll-smooth">
       <head>
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body className="antialiased selection:bg-[#1c1d20] selection:text-white">
-        <SmoothScroll>
-          <Preloader />
-          <CustomCursor />
-          <Header />
-          <main className="relative min-h-screen">
-            {children}
-          </main>
-        </SmoothScroll>
+        <LanguageProvider>
+          <SmoothScroll>
+            <Preloader />
+            <CustomCursor />
+            <Header />
+            <main className="relative min-h-screen">
+              {children}
+            </main>
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );

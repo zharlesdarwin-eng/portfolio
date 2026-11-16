@@ -4,10 +4,12 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowDownRight, Globe } from "lucide-react";
 import siteData from "@/data/site.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const marqueeFirstRef = useRef<HTMLDivElement>(null);
   const marqueeSecondRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     let xPercent = 0;
@@ -44,17 +46,17 @@ export default function Hero() {
         <div className="flex items-center gap-2 sm:gap-2.5 bg-white/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-black/5 shadow-xs">
           <Globe className="w-3.5 h-3.5 text-neutral-600 animate-spin" style={{ animationDuration: "14s" }} />
           <span className="text-[10px] sm:text-xs uppercase tracking-widest text-neutral-700 font-mono">
-            Located in {siteData.site.location}
+            {t("hero.location")}
           </span>
         </div>
 
         <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-600 font-mono">
           <ArrowDownRight className="w-3.5 h-3.5" />
-          <span>{siteData.site.role}</span>
+          <span>{t("hero.role")}</span>
         </div>
       </div>
 
-      {/* Central Portrait Visual with tight natural padding */}
+      {/* Central Portrait Visual with natural proportions */}
       <div className="relative z-10 flex flex-col items-center justify-center my-4 md:my-6 px-4">
         <div className="relative w-40 h-52 sm:w-56 sm:h-72 md:w-72 md:h-88 rounded-2xl overflow-hidden shadow-xl border-4 border-white/90 grayscale contrast-125 transition-transform duration-700 hover:scale-105">
           <img

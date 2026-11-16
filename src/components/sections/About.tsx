@@ -5,13 +5,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnetic from "@/components/ui/Magnetic";
 import Link from "next/link";
-import siteData from "@/data/site.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!textRef.current) return;
@@ -38,9 +39,10 @@ export default function About() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, []);
+  }, [t]);
 
-  const bioWords = siteData.site.shortBio.split(" ");
+  const bio = t("about.bio");
+  const bioWords = bio.split(" ");
 
   return (
     <section
@@ -52,7 +54,7 @@ export default function About() {
         {/* Left Subtext / Label */}
         <div className="lg:col-span-3">
           <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono">
-            (About Me)
+            {t("about.label")}
           </span>
         </div>
 
@@ -71,7 +73,7 @@ export default function About() {
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-neutral-300">
             <p className="max-w-md text-xs sm:text-sm text-neutral-600 leading-relaxed">
-              The combination of passion for design, code & interaction positions me in a unique place in the web design world. Focusing on purposeful motion and robust digital craft.
+              {t("about.subtext")}
             </p>
 
             <Magnetic strength={0.3} textStrength={0.15}>
@@ -79,7 +81,7 @@ export default function About() {
                 href="/#contact"
                 className="inline-flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-[#1c1d20] text-white text-xs sm:text-sm font-medium transition-transform hover:scale-105 shadow-lg"
               >
-                Contact me
+                {t("about.cta")}
               </Link>
             </Magnetic>
           </div>

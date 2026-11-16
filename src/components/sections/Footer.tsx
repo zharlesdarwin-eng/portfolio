@@ -4,15 +4,17 @@ import { useEffect, useState } from "react";
 import Magnetic from "@/components/ui/Magnetic";
 import { ArrowUpRight } from "lucide-react";
 import siteData from "@/data/site.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
   const [time, setTime] = useState("");
+  const { lang, t } = useLanguage();
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       setTime(
-        now.toLocaleTimeString("en-US", {
+        now.toLocaleTimeString(lang === "nl" ? "nl-NL" : "en-US", {
           timeZone: "Europe/Amsterdam",
           hour: "2-digit",
           minute: "2-digit",
@@ -24,7 +26,7 @@ export default function Footer() {
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [lang]);
 
   return (
     <footer
@@ -43,11 +45,11 @@ export default function Footer() {
               />
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
-              Let&apos;s work
+              {t("footer.heading1")}
             </h2>
           </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
-            together.
+            {t("footer.heading2")}
           </h2>
         </div>
 
@@ -59,7 +61,7 @@ export default function Footer() {
               className="group relative flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-[#455ce9] text-white font-medium text-sm sm:text-base md:text-lg shadow-xl transition-transform hover:scale-105"
             >
               <span className="z-10 flex items-center gap-2">
-                Get in touch
+                {t("footer.getInTouch")}
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </span>
             </a>
@@ -88,11 +90,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto w-full pt-10 md:pt-14 mt-10 md:mt-14 border-t border-neutral-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 text-xs text-neutral-400 font-mono">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div>
-            <span className="block text-neutral-600 mb-0.5">VERSION</span>
-            <span>2026 Edition</span>
+            <span className="block text-neutral-600 mb-0.5">{t("footer.version")}</span>
+            <span>{t("footer.versionVal")}</span>
           </div>
           <div>
-            <span className="block text-neutral-600 mb-0.5">LOCAL TIME</span>
+            <span className="block text-neutral-600 mb-0.5">{t("footer.localTime")}</span>
             <span>{time} GMT+1</span>
           </div>
         </div>

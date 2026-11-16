@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import siteData from "@/data/site.json";
-import { Project } from "@/types";
+import { projectsData, LocalizedProject } from "@/data/projects";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Work() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const { lang, t } = useLanguage();
 
   return (
     <section id="work" className="relative w-full py-16 md:py-24 px-6 md:px-14 bg-[#f4f4f4] text-[#1c1d20] border-t border-neutral-300/60">
@@ -18,19 +19,20 @@ export default function Work() {
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#1c1d20]" />
             <span className="text-xs uppercase tracking-widest text-neutral-600 font-mono">
-              Selected Works ({siteData.projects.length})
+              {t("work.header")} ({projectsData.length})
             </span>
           </div>
           <span className="text-xs uppercase tracking-widest text-neutral-500 font-mono hidden md:inline">
-            Design & Code • 2023–2024
+            {t("work.subheader")}
           </span>
         </div>
 
         {/* Project List */}
         <div className="flex flex-col divide-y divide-neutral-300/80">
-          {siteData.projects.map((project: Project, idx: number) => {
+          {projectsData.map((project: LocalizedProject, idx: number) => {
             const isHovered = hoveredId === project.id;
             const isDimmed = hoveredId !== null && !isHovered;
+            const content = project[lang];
 
             return (
               <div
@@ -51,7 +53,7 @@ export default function Work() {
                       href={`/work/${project.id}`}
                       className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight transition-transform duration-400 group-hover:translate-x-2 text-[#1c1d20] hover:text-[#455ce9]"
                     >
-                      {project.title}
+                      {content.title}
                     </Link>
                   </div>
 
@@ -71,7 +73,7 @@ export default function Work() {
                           href={`/work/${project.id}`}
                           className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-300 text-xs font-mono text-neutral-700 hover:border-black hover:text-black transition-colors"
                         >
-                          <span>Case Study</span>
+                          <span>{t("work.caseStudy")}</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </Magnetic>
@@ -82,7 +84,7 @@ export default function Work() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`Visit ${project.title} live website`}
+                          aria-label={`Visit ${content.title} live website`}
                           className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-neutral-300 bg-white/70 backdrop-blur-xs text-neutral-700 transition-all duration-300 group-hover:bg-[#1c1d20] group-hover:text-white group-hover:border-[#1c1d20]"
                         >
                           <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -107,20 +109,20 @@ export default function Work() {
                     >
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={content.title}
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </Link>
 
                     <div className="max-w-xl flex flex-col gap-2">
                       <p className="text-sm text-neutral-600 font-light leading-relaxed">
-                        {project.description}
+                        {content.description}
                       </p>
                       <Link
                         href={`/work/${project.id}`}
                         className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-[#1c1d20] font-medium hover:underline"
                       >
-                        <span>Explore case study</span>
+                        <span>{t("work.exploreCase")}</span>
                         <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>
@@ -132,7 +134,7 @@ export default function Work() {
                   <Link href={`/work/${project.id}`}>
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={content.title}
                       className="w-full h-full object-cover"
                     />
                   </Link>
