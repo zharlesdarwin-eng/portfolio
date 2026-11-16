@@ -43,7 +43,6 @@ export default function Header() {
   }, []);
 
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If already on homepage, smoothly scroll to top
     if (window.location.pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -54,16 +53,40 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-40 px-6 py-5 md:px-12 md:py-6 flex items-center justify-between mix-blend-difference text-white pointer-events-none">
-        {/* Brand / Logo - scrolls to top */}
-        <Link
-          href="/#"
-          onClick={scrollToTop}
-          className="pointer-events-auto group flex items-center gap-2 text-sm tracking-tight"
-        >
-          <span className="font-medium text-white transition-opacity group-hover:opacity-60">
-            © Code by Zeno
-          </span>
-        </Link>
+        {/* Dennis Snellenberg Exact Animated Brand Logo */}
+        <div className="pointer-events-auto">
+          <Magnetic strength={0.25} textStrength={0.12}>
+            <Link
+              href="/#"
+              onClick={scrollToTop}
+              className="group relative flex items-center gap-1.5 py-2 px-1 text-sm tracking-tight cursor-pointer select-none"
+            >
+              {/* Rotating Copyright Symbol (360deg on hover) */}
+              <div className="relative overflow-visible">
+                <span className="inline-block transform transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] group-hover:rotate-[360deg]">
+                  ©
+                </span>
+              </div>
+
+              {/* Masked Horizontal Sliding Text Container */}
+              <div className="relative overflow-hidden whitespace-nowrap flex items-center h-5">
+                {/* "Code by " slides left out of the mask */}
+                <span className="inline-block transform transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] group-hover:-translate-x-[4.6em]">
+                  Code by&nbsp;
+                </span>
+
+                {/* "Zeno" slides left into the "Code by" position */}
+                <span className="relative inline-block transform transition-all duration-500 ease-[cubic-bezier(0.7,0,0.3,1)] group-hover:-translate-x-[4.6em] group-hover:pr-[5.8em]">
+                  <span>Zeno</span>
+                  {/* "Hirschfeld" is positioned just outside and slides in seamlessly */}
+                  <span className="absolute left-[3.1em] top-0 whitespace-nowrap">
+                    Hirschfeld
+                  </span>
+                </span>
+              </div>
+            </Link>
+          </Magnetic>
+        </div>
 
         {/* Status & Navigation */}
         <div className="flex items-center gap-8 md:gap-12 text-sm pointer-events-auto">
