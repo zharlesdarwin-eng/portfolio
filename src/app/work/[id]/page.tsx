@@ -111,7 +111,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           </div>
           <div>
             <span className="block text-neutral-400 uppercase tracking-widest mb-0.5">Location</span>
-            <span className="text-neutral-800 font-medium">Amsterdam / Global</span>
+            <span className="text-neutral-800 font-medium">Utrecht / Global</span>
           </div>
         </div>
       </section>

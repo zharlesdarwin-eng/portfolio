@@ -69,7 +69,7 @@ export default function Header() {
         <div className="flex items-center gap-8 md:gap-12 text-sm pointer-events-auto">
           <div className="hidden lg:flex items-center gap-2 text-neutral-300">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Amsterdam, NL</span>
+            <span>Utrecht, NL</span>
             <span className="text-neutral-500">•</span>
             <span>{time} GMT+1</span>
           </div>
