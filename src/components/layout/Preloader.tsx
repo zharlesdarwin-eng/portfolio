@@ -16,10 +16,11 @@ const words = [
 
 export default function Preloader() {
   const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const [dimension, setDimension] = useState<{ width: number; height: number } | null>(null);
   const [loadingComplete, setLoadingComplete] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDimension({ width: window.innerWidth, height: window.innerHeight });
 
     // Rapid cycle through greetings
@@ -36,8 +37,12 @@ export default function Preloader() {
     }
   }, [index]);
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
+  const initialPath = dimension
+    ? `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`
+    : "";
+  const targetPath = dimension
+    ? `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`
+    : "";
 
   const curveVariants: Variants = {
     initial: {
@@ -58,7 +63,7 @@ export default function Preloader() {
           exit={{ y: "-100vh", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as [number, number, number, number], delay: 0.2 } }}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#141516] text-white"
         >
-          {dimension.width > 0 && (
+          {dimension && (
             <>
               <div className="z-10 flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />

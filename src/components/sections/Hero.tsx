@@ -13,7 +13,7 @@ export default function Hero() {
 
   useEffect(() => {
     let xPercent = 0;
-    let direction = -1;
+    const direction = -1;
 
     const animate = () => {
       if (xPercent <= -100) {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 export type Language = "nl" | "en";
 
@@ -138,18 +138,19 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("nl");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("preferred_lang") as Language;
-    if (saved === "nl" || saved === "en") {
-      setLang(saved);
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("preferred_lang") as Language;
+      if (saved === "nl" || saved === "en") return saved;
     }
-  }, []);
+    return "nl";
+  });
 
   const handleSetLang = (newLang: Language) => {
     setLang(newLang);
-    localStorage.setItem("preferred_lang", newLang);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferred_lang", newLang);
+    }
   };
 
   const toggleLang = () => {
